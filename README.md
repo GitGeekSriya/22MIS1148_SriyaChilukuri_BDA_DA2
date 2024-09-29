@@ -46,16 +46,19 @@ The dataset used for this project consists of transaction records and includes t
 
    ```bash
    python SOM.py
+   python ConfusionMatrix_EvaluationReport.py
+   
+
 ## Run the Evaluation Script
 
 After running the main script, execute the evaluation script to generate the confusion matrix and classification report:
 
-```bash
-python ConfusionMatrix_EvaluationReport.py
+
+# Fraud Detection Model Evaluation
 
 ## Output Explanation
 
-After executing the scripts, you will capture the following results:
+After executing the scripts, the following results will be captured:
 
 ### Confusion Matrix
 This matrix shows the model's performance in terms of correctly and incorrectly classified transactions:
@@ -68,30 +71,31 @@ This matrix shows the model's performance in terms of correctly and incorrectly 
 ### Classification Report
 This report provides detailed metrics on the model's performance, including:
 
-- **Precision**: The proportion of positive identifications that were actually correct (TP / (TP + FP)). A higher precision indicates fewer false positives.
-- **Recall**: The ability of the model to find all the relevant cases (TP / (TP + FN)). A higher recall means the model detects more actual fraud cases.
+- **Precision**: The proportion of positive identifications that were actually correct \((TP / (TP + FP))\). A higher precision indicates fewer false positives.
+- **Recall**: The ability of the model to find all the relevant cases \((TP / (TP + FN))\). A higher recall means the model detects more actual fraud cases.
 - **F1-score**: The harmonic mean of precision and recall, providing a single metric to evaluate the model’s performance.
 - **Support**: The number of actual occurrences of each class in the specified dataset.
 
 ### Key Inferences
-- The dataset consists of 555,719 entries with 23 columns.
-- The dataset includes the following data types: 5 float columns, 6 integer columns, and 12 object (string) columns.
-- Memory usage of the dataset is approximately 97.5 MB.
-- The `is_fraud` column indicates that only 0.39% of the transactions are fraudulent, with 2,145 fraudulent cases out of 555,719 records. This shows the dataset is highly imbalanced.
+- The dataset consists of **555,719 entries** with **23 columns**.
+- The dataset includes the following data types: **5 float columns**, **6 integer columns**, and **12 object (string) columns**.
+- Memory usage of the dataset is approximately **97.5 MB**.
+- The `is_fraud` column indicates that only **0.39%** of the transactions are fraudulent, with **2,145 fraudulent cases** out of **555,719 records**. This shows the dataset is highly imbalanced.
 
 ### Key Statistics for Important Features
-- **Transaction amount (amt)**: Various transaction amounts are recorded, with a wide range across different transactions.
+- **Transaction Amount (amt)**: Various transaction amounts are recorded, with a wide range across different transactions.
 - **Latitude (lat) and Longitude (long)**: The dataset captures geographic coordinates of the transactions and the merchant locations.
-- **City population (city_pop)**: Represents the population of the city where the transaction took place.
-- **Unix time (unix_time)**: Records the exact time of the transaction in Unix timestamp format.
-- **Merchant latitude and longitude (merch_lat and merch_long)**: Similar to transaction coordinates, but for the merchant's location.
+- **City Population (city_pop)**: Represents the population of the city where the transaction took place.
+- **Unix Time (unix_time)**: Records the exact time of the transaction in Unix timestamp format.
+- **Merchant Latitude and Longitude (merch_lat and merch_long)**: Similar to transaction coordinates, but for the merchant's location.
 
 ### Visualization Inferences
 - **Color Representation**: The colors range from blue to red, where blue indicates smaller distances between neurons (indicating similar data points) and red indicates larger distances (indicating dissimilar data points).
-- **Anomalies Detection**: The dark red areas represent regions with high mean distances to neighboring neurons. These regions are potential anomalies, which in the context of fraud detection, could indicate suspicious or fraudulent transactions.
+- **Anomaly Detection**: The dark red areas represent regions with high mean distances to neighboring neurons. These regions are potential anomalies, which in the context of fraud detection, could indicate suspicious or fraudulent transactions.
 - **Cluster Formation**: The blue areas suggest clusters of similar transactions, which are likely normal, non-fraudulent transactions.
 
-In summary, the dark red squares among the lighter colors are the key areas of interest for identifying potential fraudulent activities. This visualization helps in pinpointing anomalies that might not be easily detectable in raw data.
+  ### Output
+  ![SOM_output](https://github.com/user-attachments/assets/5d5cebd7-b9b7-430f-b73e-a38c7d960f13)
 
-### Output
-![SOM_output](https://github.com/user-attachments/assets/a92a9cff-4763-423b-bdb0-3a405aecec2f)
+
+In summary, the dark red squares among the lighter colors are key areas of interest for identifying potential fraudulent activities. This visualization helps in pinpointing anomalies that might not be easily detectable in raw data.
